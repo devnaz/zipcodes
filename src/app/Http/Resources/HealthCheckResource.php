@@ -16,7 +16,7 @@ class HealthCheckResource extends JsonResource
      *
      * @param HealthCheckPresenter $resource HealthCheck data presenter.
      */
-    function __construct(HealthCheckPresenter $resource)
+    public function __construct(HealthCheckPresenter $resource)
     {
         parent::__construct($resource);
         self::withoutWrapping();
