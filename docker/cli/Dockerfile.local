@@ -1,0 +1,12 @@
+FROM zipcodes_php-fpm
+
+WORKDIR /usr/local/www
+
+RUN apt-get install -y git
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN pecl install xdebug
+
+COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+
+USER www-data
+CMD ["uname", "-a"]

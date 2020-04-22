@@ -1,0 +1,5 @@
+FROM zipcodes_php-fpm
+
+WORKDIR /usr/local/www
+
+CMD ["/usr/local/www/artisan", "queue:work", "--queue=import", "--tries=3", "--sleep=3", "--timeout=120"]

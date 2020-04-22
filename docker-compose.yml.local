@@ -1,0 +1,99 @@
+version: '3.7'
+services:
+
+    cli:
+        build:
+            context: docker/cli
+            dockerfile: Dockerfile.local
+        restart: "no"
+        tty: false
+        stdin_open: false
+        working_dir: /usr/local/www
+        volumes:
+            - ./src:/usr/local/www
+        depends_on:
+            - php-fpm
+        env_file:
+            - .env
+
+    nginx:
+        build:
+            context: docker/nginx
+            dockerfile: Dockerfile.local
+        restart: always
+        tty: true
+        stdin_open: true
+        working_dir: /usr/local/www
+        volumes:
+            - ./src:/usr/local/www
+        ports:
+            - "0.0.0.0:44444:80"
+        depends_on:
+            - php-fpm
+        env_file:
+            - .env
+
+    php-fpm:
+        build:
+            context: docker/php-fpm
+            dockerfile: Dockerfile.local
+        volumes:
+            - ./src:/usr/local/www
+        working_dir: /usr/local/www
+        restart: always
+        tty: true
+        stdin_open: true
+        depends_on:
+            - mongodb
+        env_file:
+            - .env
+
+    mongodb:
+        build:
+            context: docker/mongodb
+            dockerfile: Dockerfile.local
+        restart: always
+        tty: true
+        stdin_open: true
+        volumes:
+            - mongodb-zipcodes:/data/db
+        working_dir: /
+        ports:
+            - "127.0.0.1:44445:27017"
+        env_file:
+            - .env
+
+    queue-import:
+        build:
+            context: docker/queue-import
+            dockerfile: Dockerfile.local
+        volumes:
+            - ./src:/usr/local/www
+        working_dir: /usr/local/www
+        restart: always
+        tty: true
+        depends_on:
+            - php-fpm
+        stdin_open: true
+        env_file:
+            - .env
+
+    redis:
+        build:
+            context: docker/redis
+            dockerfile: Dockerfile.local
+        restart: always
+        tty: true
+        stdin_open: true
+        volumes:
+            - redis-zipcodes:/data
+        working_dir: /
+        command: redis-server /usr/local/etc/redis/redis.conf --requirepass ${REDIS_PASSWORD}
+        ports:
+            - "127.0.0.1:44446:6379"
+        env_file:
+            - .env
+
+volumes:
+    mongodb-zipcodes:
+    redis-zipcodes:

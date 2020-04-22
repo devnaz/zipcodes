@@ -1,0 +1,11 @@
+FROM php:7.3.13-fpm
+
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && apt-get upgrade -y
+
+RUN apt-get install -y libicu-dev libcurl4-openssl-dev pkg-config libssl-dev libzip-dev zip unzip
+RUN docker-php-ext-install bcmath pcntl zip
+RUN pecl install mongodb
+
+COPY ./php.ini.local /usr/local/etc/php/php.ini
+COPY ./mongodb.ini /usr/local/etc/php/conf.d/mongodb.ini

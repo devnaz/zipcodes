@@ -1,0 +1,5 @@
+FROM mongo:4.2.2
+
+COPY ./mongod.conf.local /etc/mongod.conf
+
+CMD ["mongod", "-f", "/etc/mongod.conf"]
