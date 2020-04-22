@@ -3,7 +3,9 @@ Zip code management
 
 [![PHP Version](https://img.shields.io/badge/PHP-%3D>7.3.13-brightgreen.svg)](https://php.net/)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/devnaz/zipcodes/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/devnaz/zipcodes/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/devnaz/zipcodes/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/devnaz/zipcodes/?branch=master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/devnaz/zipcodes/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![Build Status](https://scrutinizer-ci.com/g/devnaz/zipcodes/badges/build.png?b=master)](https://scrutinizer-ci.com/g/devnaz/zipcodes/build-status/master)
 
 ## Requirements
 - **PHP** = >= 7.3.13
