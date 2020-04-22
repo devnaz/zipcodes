@@ -6,6 +6,7 @@ use App\Presenters\HealthCheckPresenter;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
+use Jenssegers\Mongodb\Connection;
 
 /**
  * HealthCheck service.
@@ -34,6 +35,9 @@ class HealthCheckService implements HealthCheckServiceInterface
     private function checkMongoDbServer(): bool
     {
         try {
+            /**
+             * @var Connection $connection
+             */
             $connection = DB::connection('mongodb');
             $connection->getMongoClient()->listDatabases();
             return true;

@@ -7,6 +7,9 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * Presentation of data information.
+ *
+ * See \Jenssegers\Mongodb\Eloquent\Model
+ * @method getAttribute($key)
  */
 class ZipResource extends JsonResource
 {

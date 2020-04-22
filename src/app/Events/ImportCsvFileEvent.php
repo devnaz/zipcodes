@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
 
 /**
@@ -10,8 +9,6 @@ use Illuminate\Support\Collection;
  */
 class ImportCsvFileEvent
 {
-
-    use SerializesModels;
 
     /**
      * Imported data.

@@ -7,12 +7,11 @@ use App\Repositories\ZipRepositoryInterface;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
 
 class ImportDBListener implements ShouldQueue
 {
 
-    use InteractsWithQueue, Queueable, SerializesModels;
+    use InteractsWithQueue, Queueable;
 
     /**
      * Access to ZIP codes in the storage DB.
