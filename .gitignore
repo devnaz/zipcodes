@@ -23,5 +23,6 @@ Homestead.json
 .phpunit.result.cache
 
 .idea
-.env
 docker-compose.yml
+composer.lock
+
